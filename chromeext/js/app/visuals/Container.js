@@ -5,7 +5,7 @@ define(["controller/Mediator", "controller/PulseOximeter"], function(Mediator){
 	//set the class iniitally
 	container.className = "Standby";
 
-	Mediator.route("fingerstart", function(){
+	Mediator.route("poemstart", function(){
 		container.className = "InProgress";
 	});
 

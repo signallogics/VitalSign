@@ -5,29 +5,38 @@ function(Mediator, Container, Poem){
 	textBox.id = "TextBox";
 	Container.appendChild(textBox);
 
+	var titleText = "VITAL SIGN\n\nto begin, place your finger in the pulse sensor on your left";
+
+	var calibrateText = "(finding your pulse)\n\nwords of the poem appear at the rhythm of your pulse";
+
 	function setText(text){
 		//fade out the previous text
 		textBox.className = "Visible";
-		textBox.textContent = text;
+		textBox.innerText = text;
 		setTimeout(function(){
 			textBox.className = "";
 		}, 200);
 	}
 
 	//set the text initially
-	setText("Vital Sign");
+	setText(titleText);
 
 	var waitTime = 60000/60;
 
 	//OXIMETER EVENTS//
 
 	Mediator.route("fingerstart", function(){
-		setText("Calibrating");
+		setText(calibrateText);
 	});
 
-	Mediator.route("fingerend", endPoem);
+	Mediator.route("fingerend", function(){
+		clearTimeout(timeout);
+		setText(titleText);
+	});
+
 	Mediator.route("poemend", endPoem);
-	Mediator.route("heartratestart", nextText);
+	Mediator.route("poemtitle", poemTitle);
+	Mediator.route("poemstart", nextText);
 
 	Mediator.route("heartrate", function(msg){
 		waitTime = 60000 / msg.data;
@@ -44,12 +53,20 @@ function(Mediator, Container, Poem){
 		} else {
 			setText("");
 			setTimeout(function(){
-				setText("Vital Sign");		
+				setText(titleText);		
 			}, 4000);
 		}
 	}
 
+	function poemTitle(msg){
+		setText(msg.data);
+	}
+
 	function endPoem(){
 		clearTimeout(timeout);
+		setText("");
+		setTimeout(function(){
+			setText(titleText);		
+		}, 4000);
 	}
 });

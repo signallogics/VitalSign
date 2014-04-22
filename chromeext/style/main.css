@@ -1,3 +1,6 @@
+body {
+  font-family: 'Abadi MT Condensed Light', 'sans-serif'; }
+
 #Container {
   width: 100%;
   height: 100%;
@@ -22,18 +25,83 @@
 #TextBox {
   -webkit-transition: opacity 1s;
   opacity: 0;
-  width: 100%;
+  width: 70%;
+  top: 40%;
+  left: 15%;
   position: absolute;
-  top: 50%;
-  left: 0px;
   height: 200px;
   margin-top: -100px;
   font-size: 80px;
-  font-family: monospace;
   text-align: center;
   z-index: 100;
   color: white; }
 
 #TextBox.Visible {
   -webkit-transition: opacity .2s;
+  opacity: 1; }
+
+#Container.Standby #TextBox {
+  -webkit-transition: opacity .2s;
+  opacity: 1; }
+
+#BigImage {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url("/images/heart_background.gif");
+  background-size: 100% 100%;
+  top: 0px;
+  left: 0px; }
+
+#Heart {
+  width: 36%;
+  height: auto;
+  position: absolute;
+  top: 41%;
+  left: 6%;
+  -webkit-transform: scale(1);
+  -webkit-transition: -webkit-transform .1s; }
+
+#TitleBox {
+  width: 50%;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  text-align: center;
+  font-size: 80px;
+  line-height: 100px;
+  color: white; }
+
+#Subtitle {
+  font-size: 32px;
+  line-height: 32px; }
+
+#SmallBackground {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px; }
+
+#SmallBackground.Still {
+  background: url("/images/small_background.png");
+  background-size: 100% 100%; }
+
+#SmallBackground.Animated {
+  background: url("/images/hand_animation.gif");
+  background-size: 100% 100%; }
+
+#ProgressBar {
+  width: 0%;
+  height: 20px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background-color: white;
+  -webkit-transition: width 1.5s linear, opacity 1.5s linear; }
+
+#Container.Standby #ProgressBar {
+  opacity: 0; }
+
+#Container.InProgress {
   opacity: 1; }

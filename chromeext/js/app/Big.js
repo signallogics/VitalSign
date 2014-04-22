@@ -3,7 +3,7 @@ require.config({
 	baseUrl : "js/app"
 });
 
-require(["controller/Mediator", "controller/PulseOximeter", "visuals/Waveform", "visuals/TextOutput"], 
-function(Mediator, PulseOximeter){	
-	console.log("Vital Sign v0.2");
+require(["controller/Mediator", "controller/PulseOximeter", "visuals/Heart"], 
+function(Mediator){	
+	console.log("Vital Sign - Big");
 })

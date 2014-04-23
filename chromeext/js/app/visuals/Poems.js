@@ -1,5 +1,7 @@
-define(["controller/Mediator", "text!poems/0.txt"], function(Mediator, Zero){
-	var poems = [Zero.split("/")];
+define(["controller/Mediator", "text!poems/0.txt", "text!poems/1.txt", 
+	"text!poems/2.txt", "text!poems/3.txt", "text!poems/4.txt"], 
+	function(Mediator, Zero, One, Two, Three, Four){
+	var poems = [Zero.split("/"), One.split("/"), Two.split("/"), Three.split("/"), Four.split("/")];
 
 	var poemIndex = 0;
 	var lineIndex = 0;
